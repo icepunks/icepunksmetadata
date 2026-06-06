@@ -13,81 +13,92 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: '3.10'
+          node-version: '18'
 
       - name: Create Metadata Directory
         run: mkdir -p metadata
 
-      - name: Run Metadata Generator Script
+      - name: Run Bulletproof Node Generator
         run: |
-          cat << 'EOF' > generate.py
-          import csv
-          import json
-          import os
+          cat << 'EOF' > generate.js
+          const fs = require('fs');
+          const path = require('path');
 
-          csv_file = 'traits.csv'
-          output_dir = 'metadata'
-          base_image_url = 'https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/'
+          const csvPath = 'traits.csv';
+          const outputDir = 'metadata';
+          const baseImageUrl = 'https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/';
 
-          if not os.path.exists(csv_file):
-              print("Error: traits.csv not found!")
-              exit(1)
+          if (!fs.existsSync(csvPath)) {
+              console.error("Error: traits.csv not found!");
+              process.exit(1);
+          }
 
-          with open(csv_file, mode='r', encoding='utf-8-sig') as file:
-              reader = csv.DictReader(file)
-              reader.fieldnames = [name.strip() if name else '' for name in reader.fieldnames]
-              
-              for row in reader:
-                  # Get Token ID and check if it exists
-                  raw_id = row.get('Token ID') or row.get('TokenID') or row.get('id')
-                  
-                  # Skip completely empty rows or rows without a Token ID
-                  if raw_id is None or str(raw_id).strip() == '':
-                      continue
-                  
-                  token_id = str(raw_id).strip()
-                  
-                  # Try parsing to integer safely to avoid any type error
-                  try:
-                      edition_number = int(token_id)
-                  except ValueError:
-                      continue
-                  
-                  # Standard OpenSea Metadata Structure
-                  metadata = {
-                      "name": f"Ice Punk #{token_id}",
-                      "description": "IcePunks NFT Collection generated from official traits.",
-                      "image": f"{base_image_url}{token_id}.png",
-                      "edition": edition_number,
-                      "attributes": []
+          const content = fs.readFileSync(csvPath, 'utf-8');
+          // Remove BOM if exists and split into lines
+          const lines = content.replace(/^\uFEFF/, '').split(/\r?\n/);
+          
+          if (lines.length === 0) {
+              console.error("CSV file is empty!");
+              process.exit(1);
+          }
+
+          // Parse Headers and clean spaces
+          const headers = lines[0].split(',').map(h => h.trim());
+          const tokenIdIndex = headers.findIndex(h => h.toLowerCase() === 'token id' || h.toLowerCase() === 'tokenid');
+
+          if (tokenIdIndex === -1) {
+              console.error("Error: 'Token ID' column not found in headers!");
+              process.exit(1);
+          }
+
+          console.log("Starting metadata generation...");
+
+          // Loop through rows (skip header)
+          for (let i = 1; i < lines.length; i++) {
+              const line = lines[i].trim();
+              if (!line) continue; // Skip empty rows Safely
+
+              // Split columns by comma (handle basic parsing)
+              const columns = line.split(',').map(c => c.trim());
+              const tokenId = columns[tokenIdIndex];
+
+              if (!tokenId && tokenId !== '0') continue;
+
+              const metadata = {
+                  name: `Ice Punk #${tokenId}`,
+                  description: "IcePunks NFT Collection generated from official traits.",
+                  image: `${baseImageUrl}${tokenId}.png`,
+                  edition: parseInt(tokenId, 10),
+                  attributes: []
+              };
+
+              // Map traits dynamically
+              headers.forEach((header, colIdx) => {
+                  const val = columns[colIdx];
+                  const lowerHeader = header.toLowerCase();
+
+                  if (lowerHeader !== 'token id' && lowerHeader !== 'tokenid' && lowerHeader !== 'id' && lowerHeader !== 'attributes') {
+                      if (val && val.toLowerCase() !== 'nan' && val !== '') {
+                          metadata.attributes.push({
+                              trait_type: header,
+                              value: val
+                          });
+                      }
                   }
-                  
-                  # Loop through all columns to add traits, filtering out IDs and the 'Attributes' summary column
-                  for key, value in row.items():
-                      cleaned_key = key.strip() if key else ''
-                      cleaned_value = value.strip() if value else ''
-                      
-                      if cleaned_key.lower() in ['token id', 'tokenid', 'id', 'attributes']:
-                          continue
-                          
-                      if cleaned_value and cleaned_value.lower() != 'nan' and cleaned_value != '':
-                          metadata["attributes"].append({
-                              "trait_type": cleaned_key,
-                              "value": cleaned_value
-                          })
-                  
-                  # Save as extensionless Token ID file
-                  file_path = os.path.join(output_dir, token_id)
-                  with open(file_path, 'w', encoding='utf-8') as json_file:
-                      json.dump(metadata, json_file, indent=4)
+              });
 
-          print("Metadata generation completed successfully!")
+              // Save file as extensionless Token ID
+              const filePath = path.join(outputDir, tokenId);
+              fs.writeFileSync(filePath, JSON.stringify(metadata, null, 4), 'utf-8');
+          }
+
+          console.log("Metadata generation completed successfully!");
           EOF
-          python generate.py
-          rm generate.py
+          node generate.js
+          rm generate.js
 
       - name: Commit and Push Metadata Files
         run: |
@@ -95,7 +106,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git add metadata/
           if ! git diff-index --quiet HEAD --; then
-            git commit -m "Fix token id type error and successfully generate metadata"
+            git commit -m "Successfully generate 10k metadata via Nodejs"
             git pull origin main --rebase
             git push origin main
           else
