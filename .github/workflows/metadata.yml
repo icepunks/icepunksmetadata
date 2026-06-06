@@ -21,7 +21,7 @@ jobs:
       - name: Create Metadata Directory
         run: mkdir -p metadata
 
-      - name: Run Bulletproof Node Generator
+      - name: Run Ultimate CSV Parser
         run: |
           cat << 'EOF' > generate.js
           const fs = require('fs');
@@ -37,35 +37,58 @@ jobs:
           }
 
           const content = fs.readFileSync(csvPath, 'utf-8');
-          // Remove BOM if exists and split into lines
           const lines = content.replace(/^\uFEFF/, '').split(/\r?\n/);
           
-          if (lines.length === 0) {
+          if (lines.length === 0 || !lines[0].trim()) {
               console.error("CSV file is empty!");
               process.exit(1);
           }
 
-          // Parse Headers and clean spaces
-          const headers = lines[0].split(',').map(h => h.trim());
-          const tokenIdIndex = headers.findIndex(h => h.toLowerCase() === 'token id' || h.toLowerCase() === 'tokenid');
+          // Smart delimiter detection (comma, semicolon, or tab)
+          const firstLine = lines[0];
+          let delimiter = ',';
+          if (firstLine.includes(';')) delimiter = ';';
+          else if (firstLine.includes('\t')) delimiter = '\t';
+
+          // Helper function to split CSV line safely handling quotes
+          function splitCsvLine(line, delim) {
+              const result = [];
+              let current = '';
+              let inQuotes = false;
+              for (let i = 0; i < line.length; i++) {
+                  const char = line[i];
+                  if (char === '"') {
+                      inQuotes = !inQuotes;
+                  } else if (char === delim && !inQuotes) {
+                      result.push(current.trim());
+                      current = '';
+                  } else {
+                      current += char;
+                  }
+              }
+              result.push(current.trim());
+              return result;
+          }
+
+          // Parse Headers safely
+          const headers = splitCsvLine(lines[0], delimiter);
+          const tokenIdIndex = headers.findIndex(h => h && (h.toLowerCase() === 'token id' || h.toLowerCase() === 'tokenid' || h.toLowerCase() === 'id'));
 
           if (tokenIdIndex === -1) {
-              console.error("Error: 'Token ID' column not found in headers!");
+              console.error("Error: 'Token ID' column could not be auto-detected in headers!");
               process.exit(1);
           }
 
-          console.log("Starting metadata generation...");
+          console.log(`Detected Delimiter: "${delimiter}". Starting metadata generation...`);
 
-          // Loop through rows (skip header)
           for (let i = 1; i < lines.length; i++) {
               const line = lines[i].trim();
-              if (!line) continue; // Skip empty rows Safely
+              if (!line) continue;
 
-              // Split columns by comma (handle basic parsing)
-              const columns = line.split(',').map(c => c.trim());
+              const columns = splitCsvLine(line, delimiter);
               const tokenId = columns[tokenIdIndex];
 
-              if (!tokenId && tokenId !== '0') continue;
+              if (tokenId === undefined || tokenId === '') continue;
 
               const metadata = {
                   name: `Ice Punk #${tokenId}`,
@@ -75,8 +98,8 @@ jobs:
                   attributes: []
               };
 
-              // Map traits dynamically
               headers.forEach((header, colIdx) => {
+                  if (!header) return;
                   const val = columns[colIdx];
                   const lowerHeader = header.toLowerCase();
 
@@ -84,13 +107,12 @@ jobs:
                       if (val && val.toLowerCase() !== 'nan' && val !== '') {
                           metadata.attributes.push({
                               trait_type: header,
-                              value: val
+                              value: val.replace(/^"|"$/g, '').trim() // Remove extra surrounding quotes if any
                           });
                       }
                   }
               });
 
-              // Save file as extensionless Token ID
               const filePath = path.join(outputDir, tokenId);
               fs.writeFileSync(filePath, JSON.stringify(metadata, null, 4), 'utf-8');
           }
@@ -106,7 +128,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git add metadata/
           if ! git diff-index --quiet HEAD --; then
-            git commit -m "Successfully generate 10k metadata via Nodejs"
+            git commit -m "Successfully generate 10k metadata via ultimate node parser"
             git pull origin main --rebase
             git push origin main
           else
