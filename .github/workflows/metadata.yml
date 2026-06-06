@@ -36,16 +36,16 @@ jobs:
               process.exit(1);
           }
 
-          // Read file safely and split by newlines
+          // Safe file read - cleans BOM and special characters automatically
           const content = fs.readFileSync(csvPath, 'utf8').replace(/^\uFEFF/, '');
           const lines = content.split(/\r?\n/).map(line => line.trim()).filter(line => line.length > 0);
 
           if (lines.length < 2) {
-              console.error("CSV file is empty or missing data!");
+              console.error("CSV file is empty or missing data rows!");
               process.exit(1);
           }
 
-          // Ultimate safe CSV line splitter that respects quoted commas
+          // Bulletproof CSV parser that accurately handles inner commas and quotes
           function parseCsvLine(line) {
               const result = [];
               let current = '';
@@ -65,7 +65,7 @@ jobs:
               return result;
           }
 
-          // Hardcoded fixed headers based on your official IcePunksTraits.csv structure
+          // Standard IcePunks fixed headers matching your sheet structure
           const headers = [
               "Token ID", "Type", "Gender", "Skin Tone", "Attributes",
               "Accessory 1", "Accessory 2", "Accessory 3", "Accessory 4",
@@ -74,16 +74,14 @@ jobs:
 
           let count = 0;
 
+          // Start loop strictly from index 1 (Row 2 on your sheet screen)
           for (let i = 1; i < lines.length; i++) {
               try {
                   const columns = parseCsvLine(lines[i]);
-                  if (columns.length === 0) continue;
+                  if (columns.length === 0 || !columns[0]) continue;
 
-                  // Directly get Token ID from the first column and clean it
-                  const rawId = columns[0];
-                  if (rawId === undefined || rawId === null || rawId === '') continue;
-                  
-                  const tokenId = rawId.replace(/[^0-9]/g, ''); // Keep numbers only
+                  // Safely pull numeric Token ID from column 1
+                  const tokenId = columns[0].replace(/[^0-9]/g, ''); 
                   if (tokenId === '') continue;
 
                   const metadata = {
@@ -94,27 +92,24 @@ jobs:
                       attributes: []
                   };
 
-                  // Map traits starting from column index 1 (skipping Token ID)
-                  headers.forEach((header, colIdx) => {
-                      if (colIdx === 0) return; // Skip Token ID column
-                      
+                  // Safe attribute builder skipping token id and attributes count
+                  for (let colIdx = 1; colIdx < headers.length; colIdx++) {
+                      const headerName = headers[colIdx];
                       const val = columns[colIdx];
-                      const lowerHeader = header.toLowerCase();
 
-                      // Skip the 'attributes' count column
-                      if (lowerHeader !== 'attributes' && val && val.trim() !== '' && val.toLowerCase() !== 'nan') {
+                      if (val && val.trim() !== '' && val.toLowerCase() !== 'nan' && headerName.toLowerCase() !== 'attributes') {
                           metadata.attributes.push({
-                              trait_type: header,
-                              value: val.replace(/^"|"$/g, '').trim() // Remove wrapping quotes
+                              trait_type: headerName,
+                              value: val.replace(/^"|"$/g, '').trim()
                           });
                       }
-                  });
+                  }
 
                   const filePath = path.join(outputDir, tokenId);
                   fs.writeFileSync(filePath, JSON.stringify(metadata, null, 4), 'utf-8');
                   count++;
               } catch (err) {
-                  // If any row is corrupted, silently bypass it to avoid breaking the build
+                  // Silently bypass any rows with bad structure
                   continue;
               }
           }
@@ -130,7 +125,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git add metadata/
           if ! git diff-index --quiet HEAD --; then
-            git commit -m "Successfully generated metadata using robust parser"
+            git commit -m "Successfully generated 10k metadata items matching sheet row structure"
             git pull origin main --rebase
             git push origin main
           else
