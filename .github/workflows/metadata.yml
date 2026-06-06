@@ -27,12 +27,13 @@ jobs:
           const fs = require('fs');
           const path = require('path');
 
-          const csvPath = 'traits.csv';
+          // Directly using your uploaded filename to avoid any missing file error
+          const csvPath = 'IcePunkstraits.csv';
           const outputDir = 'metadata';
           const baseImageUrl = 'https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/';
 
           if (!fs.existsSync(csvPath)) {
-              console.error("Error: traits.csv not found!");
+              console.error(`Error: The file "${csvPath}" was not found in the root directory! Please make sure it is uploaded.`);
               process.exit(1);
           }
 
@@ -129,7 +130,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git add metadata/
           if ! git diff-index --quiet HEAD --; then
-            git commit -m "Successfully generated 10k metadata files bypassing trailing breaks"
+            git commit -m "Successfully generated metadata files using official filename"
             git pull origin main --rebase
             git push origin main
           else
