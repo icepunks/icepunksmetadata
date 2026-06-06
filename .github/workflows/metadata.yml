@@ -1,0 +1,91 @@
+name: Generate NFT Metadata JSON
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate-metadata:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Create Metadata Directory
+        run: mkdir -p metadata
+
+      - name: Run Metadata Generator Script
+        run: |
+          cat << 'EOF' > generate.py
+          import csv
+          import json
+          import os
+
+          csv_file = 'traits.csv'
+          output_dir = 'metadata'
+          base_image_url = 'https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/'
+
+          if not os.path.exists(csv_file):
+              print("Error: traits.csv not found!")
+              exit(1)
+
+          with open(csv_file, mode='r', encoding='utf-8') as file:
+              reader = csv.DictReader(file)
+              
+              for row in reader:
+                  # Read Token ID directly from your new CSV file
+                  token_id = row.get('Token ID') or row.get('TokenID') or row.get('id')
+                  if token_id is None or token_id.strip() == '':
+                      continue
+                  
+                  token_id = token_id.strip()
+                  
+                  # Standard OpenSea/ERC-721 Metadata Structure
+                  metadata = {
+                      "name": f"Ice Punk #{token_id}",
+                      "description": "IcePunks NFT Collection generated from official traits.",
+                      "image": f"{base_image_url}{token_id}.png",
+                      "edition": int(token_id),
+                      "attributes": []
+                  }
+                  
+                  # Dynamically add attributes from CSV columns, skipping ID and empty fields
+                  for key, value in row.items():
+                      cleaned_key = key.strip() if key else ''
+                      cleaned_value = value.strip() if value else ''
+                      
+                      if cleaned_value and cleaned_key and cleaned_key.lower() not in ['token id', 'tokenid', 'id', 'attributes']:
+                          metadata["attributes"].append({
+                              "trait_type": cleaned_key,
+                              "value": cleaned_value
+                          })
+                  
+                  # Save file as extensionless Token ID for smart contract standard
+                  file_path = os.path.join(output_dir, token_id)
+                  with open(file_path, 'w', encoding='utf-8') as json_file:
+                      json.dump(metadata, json_file, indent=4)
+
+          print("Metadata generation completed successfully!")
+          EOF
+          python generate.py
+          rm generate.py
+
+      - name: Commit and Push Metadata Files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add metadata/
+          if ! git diff-index --quiet HEAD --; then
+            git commit -m "Generate NFT metadata based on official Token ID column"
+            git pull origin main --rebase
+            git push origin main
+          else
+            echo "No new metadata changes detected"
+          fi
