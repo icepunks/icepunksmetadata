@@ -36,27 +36,32 @@ jobs:
               print("Error: traits.csv not found!")
               exit(1)
 
-          # Using utf-8-sig to automatically clear BOM or encoding mismatches
           with open(csv_file, mode='r', encoding='utf-8-sig') as file:
               reader = csv.DictReader(file)
-              
-              # Standardize column names by stripping spaces
               reader.fieldnames = [name.strip() if name else '' for name in reader.fieldnames]
               
               for row in reader:
-                  # Flexible check for Token ID column
-                  token_id = row.get('Token ID') or row.get('TokenID') or row.get('id')
-                  if token_id is None or token_id.strip() == '':
+                  # Get Token ID and check if it exists
+                  raw_id = row.get('Token ID') or row.get('TokenID') or row.get('id')
+                  
+                  # Skip completely empty rows or rows without a Token ID
+                  if raw_id is None or str(raw_id).strip() == '':
                       continue
                   
-                  token_id = token_id.strip()
+                  token_id = str(raw_id).strip()
+                  
+                  # Try parsing to integer safely to avoid any type error
+                  try:
+                      edition_number = int(token_id)
+                  except ValueError:
+                      continue
                   
                   # Standard OpenSea Metadata Structure
                   metadata = {
                       "name": f"Ice Punk #{token_id}",
                       "description": "IcePunks NFT Collection generated from official traits.",
                       "image": f"{base_image_url}{token_id}.png",
-                      "edition": int(token_id),
+                      "edition": edition_number,
                       "attributes": []
                   }
                   
@@ -65,11 +70,10 @@ jobs:
                       cleaned_key = key.strip() if key else ''
                       cleaned_value = value.strip() if value else ''
                       
-                      # Skip columns that aren't pure NFT traits
                       if cleaned_key.lower() in ['token id', 'tokenid', 'id', 'attributes']:
                           continue
                           
-                      if cleaned_value and cleaned_value.lower() != 'nan':
+                      if cleaned_value and cleaned_value.lower() != 'nan' and cleaned_value != '':
                           metadata["attributes"].append({
                               "trait_type": cleaned_key,
                               "value": cleaned_value
@@ -91,7 +95,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git add metadata/
           if ! git diff-index --quiet HEAD --; then
-            git commit -m "Fix encoding and generate official NFT metadata"
+            git commit -m "Fix token id type error and successfully generate metadata"
             git pull origin main --rebase
             git push origin main
           else
