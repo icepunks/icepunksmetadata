@@ -21,7 +21,7 @@ jobs:
       - name: Create Metadata Directory
         run: mkdir -p metadata
 
-      - name: Run Bulletproof Metadata Generator
+      - name: Run Super Robust Metadata Generator
         run: |
           cat << 'EOF' > generate.js
           const fs = require('fs');
@@ -36,16 +36,20 @@ jobs:
               process.exit(1);
           }
 
-          // Safe file read - cleans BOM and special characters automatically
-          const content = fs.readFileSync(csvPath, 'utf8').replace(/^\uFEFF/, '');
-          const lines = content.split(/\r?\n/).map(line => line.trim()).filter(line => line.length > 0);
+          // Clean BOM and standardize all carriage returns cleanly
+          const content = fs.readFileSync(csvPath, 'utf8')
+                            .replace(/^\uFEFF/, '')
+                            .replace(/\r\n/g, '\n')
+                            .replace(/\r/g, '\n');
+                            
+          const lines = content.split('\n').map(line => line.trim()).filter(line => line.length > 0);
 
           if (lines.length < 2) {
               console.error("CSV file is empty or missing data rows!");
               process.exit(1);
           }
 
-          // Bulletproof CSV parser that accurately handles inner commas and quotes
+          // Advanced CSV splitter that strips wrapping quotes and spaces safely
           function parseCsvLine(line) {
               const result = [];
               let current = '';
@@ -65,7 +69,7 @@ jobs:
               return result;
           }
 
-          // Standard IcePunks fixed headers matching your sheet structure
+          // Static hardcoded headers to completely bypass sheet first row text corruption
           const headers = [
               "Token ID", "Type", "Gender", "Skin Tone", "Attributes",
               "Accessory 1", "Accessory 2", "Accessory 3", "Accessory 4",
@@ -74,13 +78,13 @@ jobs:
 
           let count = 0;
 
-          // Start loop strictly from index 1 (Row 2 on your sheet screen)
+          // Start strictly from loop 1 (Row 2 on your sheet)
           for (let i = 1; i < lines.length; i++) {
               try {
                   const columns = parseCsvLine(lines[i]);
                   if (columns.length === 0 || !columns[0]) continue;
 
-                  // Safely pull numeric Token ID from column 1
+                  // Extract and isolate only digits for Token ID
                   const tokenId = columns[0].replace(/[^0-9]/g, ''); 
                   if (tokenId === '') continue;
 
@@ -92,7 +96,7 @@ jobs:
                       attributes: []
                   };
 
-                  // Safe attribute builder skipping token id and attributes count
+                  // Map column values safely with zero reliance on CSV first row headers
                   for (let colIdx = 1; colIdx < headers.length; colIdx++) {
                       const headerName = headers[colIdx];
                       const val = columns[colIdx];
@@ -109,7 +113,7 @@ jobs:
                   fs.writeFileSync(filePath, JSON.stringify(metadata, null, 4), 'utf-8');
                   count++;
               } catch (err) {
-                  // Silently bypass any rows with bad structure
+                  // Fallback safe bypass
                   continue;
               }
           }
@@ -125,7 +129,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git add metadata/
           if ! git diff-index --quiet HEAD --; then
-            git commit -m "Successfully generated 10k metadata items matching sheet row structure"
+            git commit -m "Successfully generated 10k metadata files bypassing trailing breaks"
             git pull origin main --rebase
             git push origin main
           else
