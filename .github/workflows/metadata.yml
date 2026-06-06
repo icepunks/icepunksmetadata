@@ -36,18 +36,22 @@ jobs:
               print("Error: traits.csv not found!")
               exit(1)
 
-          with open(csv_file, mode='r', encoding='utf-8') as file:
+          # Using utf-8-sig to automatically clear BOM or encoding mismatches
+          with open(csv_file, mode='r', encoding='utf-8-sig') as file:
               reader = csv.DictReader(file)
               
+              # Standardize column names by stripping spaces
+              reader.fieldnames = [name.strip() if name else '' for name in reader.fieldnames]
+              
               for row in reader:
-                  # Read Token ID directly from your new CSV file
+                  # Flexible check for Token ID column
                   token_id = row.get('Token ID') or row.get('TokenID') or row.get('id')
                   if token_id is None or token_id.strip() == '':
                       continue
                   
                   token_id = token_id.strip()
                   
-                  # Standard OpenSea/ERC-721 Metadata Structure
+                  # Standard OpenSea Metadata Structure
                   metadata = {
                       "name": f"Ice Punk #{token_id}",
                       "description": "IcePunks NFT Collection generated from official traits.",
@@ -56,18 +60,22 @@ jobs:
                       "attributes": []
                   }
                   
-                  # Dynamically add attributes from CSV columns, skipping ID and empty fields
+                  # Loop through all columns to add traits, filtering out IDs and the 'Attributes' summary column
                   for key, value in row.items():
                       cleaned_key = key.strip() if key else ''
                       cleaned_value = value.strip() if value else ''
                       
-                      if cleaned_value and cleaned_key and cleaned_key.lower() not in ['token id', 'tokenid', 'id', 'attributes']:
+                      # Skip columns that aren't pure NFT traits
+                      if cleaned_key.lower() in ['token id', 'tokenid', 'id', 'attributes']:
+                          continue
+                          
+                      if cleaned_value and cleaned_value.lower() != 'nan':
                           metadata["attributes"].append({
                               "trait_type": cleaned_key,
                               "value": cleaned_value
                           })
                   
-                  # Save file as extensionless Token ID for smart contract standard
+                  # Save as extensionless Token ID file
                   file_path = os.path.join(output_dir, token_id)
                   with open(file_path, 'w', encoding='utf-8') as json_file:
                       json.dump(metadata, json_file, indent=4)
@@ -83,7 +91,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git add metadata/
           if ! git diff-index --quiet HEAD --; then
-            git commit -m "Generate NFT metadata based on official Token ID column"
+            git commit -m "Fix encoding and generate official NFT metadata"
             git pull origin main --rebase
             git push origin main
           else
