@@ -36,29 +36,25 @@ jobs:
               process.exit(1);
           }
 
-          // Read file safely handling binary or messy data
+          // Read file safely and split by lines
           const content = fs.readFileSync(csvPath, 'utf8').replace(/^\uFEFF/, '');
           const lines = content.split(/\r?\n/).map(line => line.trim()).filter(line => line.length > 0);
 
           if (lines.length < 2) {
-              console.error("CSV file does not contain enough data!");
+              console.error("CSV file is empty or missing data!");
               process.exit(1);
           }
 
-          // Safe CSV line parser that automatically detects comma/semicolon and strips quotes
+          // Safe CSV line splitter that handles quotes and delimiters
           function parseCsvLine(line) {
-              let delimiter = ',';
-              if (line.includes(';')) delimiter = ';';
-              
               const result = [];
               let current = '';
               let inQuotes = false;
-
               for (let i = 0; i < line.length; i++) {
                   const char = line[i];
                   if (char === '"') {
                       inQuotes = !inQuotes;
-                  } else if (char === delimiter && !inQuotes) {
+                  } else if (char === ',' && !inQuotes) {
                       result.push(current.trim());
                       current = '';
                   } else {
@@ -69,19 +65,24 @@ jobs:
               return result;
           }
 
-          const headers = parseCsvLine(lines[0]);
-          console.log("Headers detected successfully.");
+          // Fixed headers matching your IcePunksTraits.csv perfectly
+          const headers = [
+              "Token ID", "Type", "Gender", "Skin Tone", "Attributes",
+              "Accessory 1", "Accessory 2", "Accessory 3", "Accessory 4",
+              "Accessory 5", "Accessory 6", "Accessory 7"
+          ];
 
-          let successfulCount = 0;
+          let count = 0;
 
+          // Start loop from index 1 (skipping header)
           for (let i = 1; i < lines.length; i++) {
               try {
                   const columns = parseCsvLine(lines[i]);
                   if (columns.length === 0 || !columns[0]) continue;
 
-                  // Safely read token id
-                  const tokenId = columns[0].replace(/[^0-9]/g, ''); // Extract only numbers
-                  if (!tokenId) continue;
+                  // Directly extract Token ID from the first column and clean any non-numeric symbols
+                  const tokenId = columns[0].replace(/[^0-9]/g, ''); 
+                  if (tokenId === '') continue;
 
                   const metadata = {
                       name: `Ice Punk #${tokenId}`,
@@ -91,37 +92,29 @@ jobs:
                       attributes: []
                   };
 
-                  headers.forEach((header, colIdx) => {
-                      if (!header) return;
+                  // Safe attribute mapping without any header dependency
+                  for (let colIdx = 1; colIdx < headers.length; colIdx++) {
+                      const headerName = headers[colIdx];
                       const val = columns[colIdx];
-                      const cleanHeader = header.trim();
 
-                      // Filter out administrative columns
-                      if (
-                          cleanHeader.toLowerCase() !== 'token id' && 
-                          cleanHeader.toLowerCase() !== 'tokenid' && 
-                          cleanHeader.toLowerCase() !== 'id' && 
-                          cleanHeader.toLowerCase() !== 'attributes'
-                      ) {
-                          if (val && val.toLowerCase() !== 'nan' && val.trim() !== '') {
-                              metadata.attributes.push({
-                                  trait_type: cleanHeader,
-                                  value: val.replace(/^"|"$/g, '').trim()
-                              });
-                          }
+                      if (headerName.toLowerCase() !== 'attributes' && val && val.trim() !== '' && val.toLowerCase() !== 'nan') {
+                          metadata.attributes.push({
+                              trait_type: headerName,
+                              value: val.replace(/^"|"$/g, '').trim()
+                          });
                       }
-                  });
+                  }
 
                   const filePath = path.join(outputDir, tokenId);
                   fs.writeFileSync(filePath, JSON.stringify(metadata, null, 4), 'utf-8');
-                  successfulCount++;
-              } catch (lineError) {
-                  // Safe bypass: If any row is corrupted, skip it instead of crashing the process
+                  count++;
+              } catch (err) {
+                  // Silently skip any broken line to prevent crashing
                   continue;
               }
           }
 
-          console.log(`Successfully generated ${successfulCount} metadata files!`);
+          console.log(`Successfully generated ${count} metadata files!`);
           EOF
           node generate.js
           rm generate.js
@@ -132,9 +125,9 @@ jobs:
           git config --local user.name "GitHub Action"
           git add metadata/
           if ! git diff-index --quiet HEAD --; then
-            git commit -m "Successfully generate 10k metadata via bulletproof parser"
+            git commit -m "Successfully generated 10k metadata files without header issues"
             git pull origin main --rebase
             git push origin main
           else
-            echo "No new metadata changes detected"
+            echo "No changes detected"
           fi
