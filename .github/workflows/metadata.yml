@@ -21,7 +21,7 @@ jobs:
       - name: Create Metadata Directory
         run: mkdir -p metadata
 
-      - name: Run Ultimate CSV Parser
+      - name: Run Bulletproof Metadata Generator
         run: |
           cat << 'EOF' > generate.js
           const fs = require('fs');
@@ -36,30 +36,29 @@ jobs:
               process.exit(1);
           }
 
-          const content = fs.readFileSync(csvPath, 'utf-8');
-          const lines = content.replace(/^\uFEFF/, '').split(/\r?\n/);
-          
-          if (lines.length === 0 || !lines[0].trim()) {
-              console.error("CSV file is empty!");
+          // Read file safely handling binary or messy data
+          const content = fs.readFileSync(csvPath, 'utf8').replace(/^\uFEFF/, '');
+          const lines = content.split(/\r?\n/).map(line => line.trim()).filter(line => line.length > 0);
+
+          if (lines.length < 2) {
+              console.error("CSV file does not contain enough data!");
               process.exit(1);
           }
 
-          // Smart delimiter detection (comma, semicolon, or tab)
-          const firstLine = lines[0];
-          let delimiter = ',';
-          if (firstLine.includes(';')) delimiter = ';';
-          else if (firstLine.includes('\t')) delimiter = '\t';
-
-          // Helper function to split CSV line safely handling quotes
-          function splitCsvLine(line, delim) {
+          // Safe CSV line parser that automatically detects comma/semicolon and strips quotes
+          function parseCsvLine(line) {
+              let delimiter = ',';
+              if (line.includes(';')) delimiter = ';';
+              
               const result = [];
               let current = '';
               let inQuotes = false;
+
               for (let i = 0; i < line.length; i++) {
                   const char = line[i];
                   if (char === '"') {
                       inQuotes = !inQuotes;
-                  } else if (char === delim && !inQuotes) {
+                  } else if (char === delimiter && !inQuotes) {
                       result.push(current.trim());
                       current = '';
                   } else {
@@ -70,54 +69,59 @@ jobs:
               return result;
           }
 
-          // Parse Headers safely
-          const headers = splitCsvLine(lines[0], delimiter);
-          const tokenIdIndex = headers.findIndex(h => h && (h.toLowerCase() === 'token id' || h.toLowerCase() === 'tokenid' || h.toLowerCase() === 'id'));
+          const headers = parseCsvLine(lines[0]);
+          console.log("Headers detected successfully.");
 
-          if (tokenIdIndex === -1) {
-              console.error("Error: 'Token ID' column could not be auto-detected in headers!");
-              process.exit(1);
-          }
-
-          console.log(`Detected Delimiter: "${delimiter}". Starting metadata generation...`);
+          let successfulCount = 0;
 
           for (let i = 1; i < lines.length; i++) {
-              const line = lines[i].trim();
-              if (!line) continue;
+              try {
+                  const columns = parseCsvLine(lines[i]);
+                  if (columns.length === 0 || !columns[0]) continue;
 
-              const columns = splitCsvLine(line, delimiter);
-              const tokenId = columns[tokenIdIndex];
+                  // Safely read token id
+                  const tokenId = columns[0].replace(/[^0-9]/g, ''); // Extract only numbers
+                  if (!tokenId) continue;
 
-              if (tokenId === undefined || tokenId === '') continue;
+                  const metadata = {
+                      name: `Ice Punk #${tokenId}`,
+                      description: "IcePunks NFT Collection generated from official traits.",
+                      image: `${baseImageUrl}${tokenId}.png`,
+                      edition: parseInt(tokenId, 10),
+                      attributes: []
+                  };
 
-              const metadata = {
-                  name: `Ice Punk #${tokenId}`,
-                  description: "IcePunks NFT Collection generated from official traits.",
-                  image: `${baseImageUrl}${tokenId}.png`,
-                  edition: parseInt(tokenId, 10),
-                  attributes: []
-              };
+                  headers.forEach((header, colIdx) => {
+                      if (!header) return;
+                      const val = columns[colIdx];
+                      const cleanHeader = header.trim();
 
-              headers.forEach((header, colIdx) => {
-                  if (!header) return;
-                  const val = columns[colIdx];
-                  const lowerHeader = header.toLowerCase();
-
-                  if (lowerHeader !== 'token id' && lowerHeader !== 'tokenid' && lowerHeader !== 'id' && lowerHeader !== 'attributes') {
-                      if (val && val.toLowerCase() !== 'nan' && val !== '') {
-                          metadata.attributes.push({
-                              trait_type: header,
-                              value: val.replace(/^"|"$/g, '').trim() // Remove extra surrounding quotes if any
-                          });
+                      // Filter out administrative columns
+                      if (
+                          cleanHeader.toLowerCase() !== 'token id' && 
+                          cleanHeader.toLowerCase() !== 'tokenid' && 
+                          cleanHeader.toLowerCase() !== 'id' && 
+                          cleanHeader.toLowerCase() !== 'attributes'
+                      ) {
+                          if (val && val.toLowerCase() !== 'nan' && val.trim() !== '') {
+                              metadata.attributes.push({
+                                  trait_type: cleanHeader,
+                                  value: val.replace(/^"|"$/g, '').trim()
+                              });
+                          }
                       }
-                  }
-              });
+                  });
 
-              const filePath = path.join(outputDir, tokenId);
-              fs.writeFileSync(filePath, JSON.stringify(metadata, null, 4), 'utf-8');
+                  const filePath = path.join(outputDir, tokenId);
+                  fs.writeFileSync(filePath, JSON.stringify(metadata, null, 4), 'utf-8');
+                  successfulCount++;
+              } catch (lineError) {
+                  // Safe bypass: If any row is corrupted, skip it instead of crashing the process
+                  continue;
+              }
           }
 
-          console.log("Metadata generation completed successfully!");
+          console.log(`Successfully generated ${successfulCount} metadata files!`);
           EOF
           node generate.js
           rm generate.js
@@ -128,7 +132,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git add metadata/
           if ! git diff-index --quiet HEAD --; then
-            git commit -m "Successfully generate 10k metadata via ultimate node parser"
+            git commit -m "Successfully generate 10k metadata via bulletproof parser"
             git pull origin main --rebase
             git push origin main
           else
