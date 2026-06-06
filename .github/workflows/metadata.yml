@@ -36,7 +36,7 @@ jobs:
               process.exit(1);
           }
 
-          // Read file safely and split by lines
+          // Read file safely and split by newlines
           const content = fs.readFileSync(csvPath, 'utf8').replace(/^\uFEFF/, '');
           const lines = content.split(/\r?\n/).map(line => line.trim()).filter(line => line.length > 0);
 
@@ -45,7 +45,7 @@ jobs:
               process.exit(1);
           }
 
-          // Safe CSV line splitter that handles quotes and delimiters
+          // Ultimate safe CSV line splitter that respects quoted commas
           function parseCsvLine(line) {
               const result = [];
               let current = '';
@@ -65,7 +65,7 @@ jobs:
               return result;
           }
 
-          // Fixed headers matching your IcePunksTraits.csv perfectly
+          // Hardcoded fixed headers based on your official IcePunksTraits.csv structure
           const headers = [
               "Token ID", "Type", "Gender", "Skin Tone", "Attributes",
               "Accessory 1", "Accessory 2", "Accessory 3", "Accessory 4",
@@ -74,14 +74,16 @@ jobs:
 
           let count = 0;
 
-          // Start loop from index 1 (skipping header)
           for (let i = 1; i < lines.length; i++) {
               try {
                   const columns = parseCsvLine(lines[i]);
-                  if (columns.length === 0 || !columns[0]) continue;
+                  if (columns.length === 0) continue;
 
-                  // Directly extract Token ID from the first column and clean any non-numeric symbols
-                  const tokenId = columns[0].replace(/[^0-9]/g, ''); 
+                  // Directly get Token ID from the first column and clean it
+                  const rawId = columns[0];
+                  if (rawId === undefined || rawId === null || rawId === '') continue;
+                  
+                  const tokenId = rawId.replace(/[^0-9]/g, ''); // Keep numbers only
                   if (tokenId === '') continue;
 
                   const metadata = {
@@ -92,24 +94,27 @@ jobs:
                       attributes: []
                   };
 
-                  // Safe attribute mapping without any header dependency
-                  for (let colIdx = 1; colIdx < headers.length; colIdx++) {
-                      const headerName = headers[colIdx];
+                  // Map traits starting from column index 1 (skipping Token ID)
+                  headers.forEach((header, colIdx) => {
+                      if (colIdx === 0) return; // Skip Token ID column
+                      
                       const val = columns[colIdx];
+                      const lowerHeader = header.toLowerCase();
 
-                      if (headerName.toLowerCase() !== 'attributes' && val && val.trim() !== '' && val.toLowerCase() !== 'nan') {
+                      // Skip the 'attributes' count column
+                      if (lowerHeader !== 'attributes' && val && val.trim() !== '' && val.toLowerCase() !== 'nan') {
                           metadata.attributes.push({
-                              trait_type: headerName,
-                              value: val.replace(/^"|"$/g, '').trim()
+                              trait_type: header,
+                              value: val.replace(/^"|"$/g, '').trim() // Remove wrapping quotes
                           });
                       }
-                  }
+                  });
 
                   const filePath = path.join(outputDir, tokenId);
                   fs.writeFileSync(filePath, JSON.stringify(metadata, null, 4), 'utf-8');
                   count++;
               } catch (err) {
-                  // Silently skip any broken line to prevent crashing
+                  // If any row is corrupted, silently bypass it to avoid breaking the build
                   continue;
               }
           }
@@ -125,7 +130,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git add metadata/
           if ! git diff-index --quiet HEAD --; then
-            git commit -m "Successfully generated 10k metadata files without header issues"
+            git commit -m "Successfully generated metadata using robust parser"
             git pull origin main --rebase
             git push origin main
           else
