@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #2544",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/2544.png",
+    "edition": 2544,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Light"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Tassle Hat"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Regular Shades"
+        }
+    ]
+}

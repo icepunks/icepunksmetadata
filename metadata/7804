@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #7804",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/7804.png",
+    "edition": 7804,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Alien"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Cap Forward"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Pipe"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Small Shades"
+        }
+    ]
+}

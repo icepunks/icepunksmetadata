@@ -1,0 +1,32 @@
+{
+    "name": "Ice Punk #9203",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/9203.png",
+    "edition": 9203,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Zombie"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Clown Nose"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Cap Forward"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Goat"
+        },
+        {
+            "trait_type": "Accessory 4",
+            "value": "Mole"
+        }
+    ]
+}

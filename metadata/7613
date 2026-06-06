@@ -1,0 +1,32 @@
+{
+    "name": "Ice Punk #7613",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/7613.png",
+    "edition": 7613,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Light"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Glacier Hair"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Goat"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "3D Glasses"
+        }
+    ]
+}

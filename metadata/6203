@@ -1,0 +1,36 @@
+{
+    "name": "Ice Punk #6203",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/6203.png",
+    "edition": 6203,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Light"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Frown"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Chinstrap"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Horned Rim Glasses"
+        },
+        {
+            "trait_type": "Accessory 4",
+            "value": "Navy Mohawk"
+        }
+    ]
+}

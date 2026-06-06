@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #2882",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/2882.png",
+    "edition": 2882,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Albino"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Earring"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Pipe"
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #9514",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/9514.png",
+    "edition": 9514,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Albino"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Platinum Bob"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Cigarette"
+        }
+    ]
+}

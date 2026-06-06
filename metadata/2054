@@ -1,0 +1,36 @@
+{
+    "name": "Ice Punk #2054",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/2054.png",
+    "edition": 2054,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Dark"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Clown Nose"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Pipe"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Clown Eyes Cyan"
+        },
+        {
+            "trait_type": "Accessory 4",
+            "value": "Straight Hair Platinum"
+        }
+    ]
+}

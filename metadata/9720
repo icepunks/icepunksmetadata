@@ -1,0 +1,32 @@
+{
+    "name": "Ice Punk #9720",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/9720.png",
+    "edition": 9720,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Dark"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Peak Spike"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Vape"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Earring"
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #7350",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/7350.png",
+    "edition": 7350,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Dark"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Bandana"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Clown Nose"
+        }
+    ]
+}

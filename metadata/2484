@@ -1,0 +1,24 @@
+{
+    "name": "Ice Punk #2484",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/2484.png",
+    "edition": 2484,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Zombie"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Wild Hair"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Classic Shades"
+        }
+    ]
+}

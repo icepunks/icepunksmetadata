@@ -1,0 +1,32 @@
+{
+    "name": "Ice Punk #6060",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/6060.png",
+    "edition": 6060,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Light"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Spots"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Smile"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Do-rag"
+        }
+    ]
+}

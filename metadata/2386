@@ -1,0 +1,24 @@
+{
+    "name": "Ice Punk #2386",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/2386.png",
+    "edition": 2386,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Ape"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Headband"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Small Shades"
+        }
+    ]
+}

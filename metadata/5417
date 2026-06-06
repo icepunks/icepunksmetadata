@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #5417",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/5417.png",
+    "edition": 5417,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Medium"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Luxurious Beard"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Mohawk Thin"
+        }
+    ]
+}

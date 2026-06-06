@@ -1,0 +1,32 @@
+{
+    "name": "Ice Punk #3119",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/3119.png",
+    "edition": 3119,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Dark"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Snow Hair"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Navy Lipstick"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Horned Rim Glasses"
+        }
+    ]
+}

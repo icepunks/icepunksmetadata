@@ -1,0 +1,24 @@
+{
+    "name": "Ice Punk #7191",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/7191.png",
+    "edition": 7191,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Ape"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Nerd Glasses"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Knitted Cap"
+        }
+    ]
+}

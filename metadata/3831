@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #3831",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/3831.png",
+    "edition": 3831,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Zombie"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Vampire Hair"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Big Shades"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Medical Mask"
+        }
+    ]
+}

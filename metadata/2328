@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #2328",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/2328.png",
+    "edition": 2328,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Light"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Mohawk Thin"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Eye Patch"
+        }
+    ]
+}

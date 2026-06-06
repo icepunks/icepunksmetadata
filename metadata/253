@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #253",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/253.png",
+    "edition": 253,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Dark"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Clown Eyes Cyan"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Platinum Short"
+        }
+    ]
+}

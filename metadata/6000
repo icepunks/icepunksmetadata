@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #6000",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/6000.png",
+    "edition": 6000,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Light"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Front Beard"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Crazy Hair"
+        }
+    ]
+}

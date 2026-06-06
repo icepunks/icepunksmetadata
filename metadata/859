@@ -1,0 +1,32 @@
+{
+    "name": "Ice Punk #859",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/859.png",
+    "edition": 859,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Dark"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Chinstrap"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Knitted Cap"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "VR"
+        }
+    ]
+}

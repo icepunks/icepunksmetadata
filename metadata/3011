@@ -1,0 +1,44 @@
+{
+    "name": "Ice Punk #3011",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/3011.png",
+    "edition": 3011,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Dark"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Vampire Hair"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Frown"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Earring"
+        },
+        {
+            "trait_type": "Accessory 4",
+            "value": "Normal Beard"
+        },
+        {
+            "trait_type": "Accessory 5",
+            "value": "Pipe"
+        },
+        {
+            "trait_type": "Accessory 6",
+            "value": "Small Shades"
+        }
+    ]
+}

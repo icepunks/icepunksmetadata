@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #1220",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/1220.png",
+    "edition": 1220,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Light"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Pink With Hat"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Arctic Lipstick"
+        }
+    ]
+}

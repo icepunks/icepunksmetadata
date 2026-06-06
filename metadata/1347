@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #1347",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/1347.png",
+    "edition": 1347,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Light"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Frumpy Hair"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Goat"
+        }
+    ]
+}

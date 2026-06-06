@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #8964",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/8964.png",
+    "edition": 8964,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Medium"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Big Shades"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Half Shaved"
+        }
+    ]
+}

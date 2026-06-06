@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #534",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/534.png",
+    "edition": 534,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Dark"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Pigtails"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "VR"
+        }
+    ]
+}

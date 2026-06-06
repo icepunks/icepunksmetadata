@@ -1,0 +1,40 @@
+{
+    "name": "Ice Punk #9943",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/9943.png",
+    "edition": 9943,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Albino"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Navy Lipstick"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Mohawk Thin"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Eye Patch"
+        },
+        {
+            "trait_type": "Accessory 4",
+            "value": "Earring"
+        },
+        {
+            "trait_type": "Accessory 5",
+            "value": "Cigarette"
+        }
+    ]
+}

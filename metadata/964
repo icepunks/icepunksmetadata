@@ -1,0 +1,32 @@
+{
+    "name": "Ice Punk #964",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/964.png",
+    "edition": 964,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Dark"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Luxurious Beard"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Earring"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Headband"
+        }
+    ]
+}

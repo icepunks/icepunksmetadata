@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #1925",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/1925.png",
+    "edition": 1925,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Dark"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Hoodie"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Classic Shades"
+        }
+    ]
+}

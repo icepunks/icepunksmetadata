@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #5066",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/5066.png",
+    "edition": 5066,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Zombie"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Earring"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Knitted Cap"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Smile"
+        }
+    ]
+}

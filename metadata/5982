@@ -1,0 +1,32 @@
+{
+    "name": "Ice Punk #5982",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/5982.png",
+    "edition": 5982,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Albino"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Frost Lipstick"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Stringy Hair"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Clown Eyes Glacier"
+        }
+    ]
+}

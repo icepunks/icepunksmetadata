@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #4516",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/4516.png",
+    "edition": 4516,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Light"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Knitted Cap"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Arctic Eye Shadow"
+        }
+    ]
+}

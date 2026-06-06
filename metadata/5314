@@ -1,0 +1,24 @@
+{
+    "name": "Ice Punk #5314",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/5314.png",
+    "edition": 5314,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Ape"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Horned Rim Glasses"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Do-rag"
+        }
+    ]
+}

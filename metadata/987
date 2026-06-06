@@ -1,0 +1,24 @@
+{
+    "name": "Ice Punk #987",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/987.png",
+    "edition": 987,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Zombie"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Wild Hair"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Horned Rim Glasses"
+        }
+    ]
+}

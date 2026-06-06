@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #1530",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/1530.png",
+    "edition": 1530,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Albino"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Knitted Cap"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Eye Patch"
+        }
+    ]
+}

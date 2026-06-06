@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #8595",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/8595.png",
+    "edition": 8595,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Light"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "VR"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Navy Mohawk"
+        }
+    ]
+}

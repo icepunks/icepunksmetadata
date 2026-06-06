@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #5518",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/5518.png",
+    "edition": 5518,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Albino"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Messy Hair"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Arctic Eye Shadow"
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "name": "Ice Punk #5280",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/5280.png",
+    "edition": 5280,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Light"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Cigarette"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Muttonchops"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Wild Hair"
+        },
+        {
+            "trait_type": "Accessory 4",
+            "value": "Nerd Glasses"
+        }
+    ]
+}

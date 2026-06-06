@@ -1,0 +1,32 @@
+{
+    "name": "Ice Punk #9386",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/9386.png",
+    "edition": 9386,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Dark"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Muttonchops"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Small Shades"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Navy Mohawk"
+        }
+    ]
+}

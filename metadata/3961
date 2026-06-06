@@ -1,0 +1,40 @@
+{
+    "name": "Ice Punk #3961",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/3961.png",
+    "edition": 3961,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Medium"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Clown Nose"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Navy Lipstick"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Mohawk Thin"
+        },
+        {
+            "trait_type": "Accessory 4",
+            "value": "Earring"
+        },
+        {
+            "trait_type": "Accessory 5",
+            "value": "Cigarette"
+        }
+    ]
+}

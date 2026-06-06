@@ -1,0 +1,24 @@
+{
+    "name": "Ice Punk #2243",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/2243.png",
+    "edition": 2243,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Ape"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Bandana"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Nerd Glasses"
+        }
+    ]
+}

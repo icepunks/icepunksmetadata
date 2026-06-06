@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #7503",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/7503.png",
+    "edition": 7503,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Medium"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Spots"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Platinum Short"
+        }
+    ]
+}

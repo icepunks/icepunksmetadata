@@ -1,0 +1,32 @@
+{
+    "name": "Ice Punk #4964",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/4964.png",
+    "edition": 4964,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Light"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Vape"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Navy Lipstick"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Mohawk Thin"
+        }
+    ]
+}

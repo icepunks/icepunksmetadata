@@ -1,0 +1,32 @@
+{
+    "name": "Ice Punk #4020",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/4020.png",
+    "edition": 4020,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Dark"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Front Beard"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Police Cap"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Nerd Glasses"
+        }
+    ]
+}

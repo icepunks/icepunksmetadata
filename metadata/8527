@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #8527",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/8527.png",
+    "edition": 8527,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Light"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Eye Mask"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Tiara"
+        }
+    ]
+}

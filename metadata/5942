@@ -1,0 +1,36 @@
+{
+    "name": "Ice Punk #5942",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/5942.png",
+    "edition": 5942,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Medium"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Vape"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Earring"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Eye Patch"
+        },
+        {
+            "trait_type": "Accessory 4",
+            "value": "Navy Mohawk"
+        }
+    ]
+}

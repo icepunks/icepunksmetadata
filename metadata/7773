@@ -1,0 +1,32 @@
+{
+    "name": "Ice Punk #7773",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/7773.png",
+    "edition": 7773,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Light"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Clown Nose"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Wild Hair"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Regular Shades"
+        }
+    ]
+}

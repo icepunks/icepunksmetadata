@@ -1,0 +1,44 @@
+{
+    "name": "Ice Punk #5949",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/5949.png",
+    "edition": 5949,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Dark"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Mole"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Tassle Hat"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Big Shades"
+        },
+        {
+            "trait_type": "Accessory 4",
+            "value": "Medical Mask"
+        },
+        {
+            "trait_type": "Accessory 5",
+            "value": "Arctic Lipstick"
+        },
+        {
+            "trait_type": "Accessory 6",
+            "value": "Earring"
+        }
+    ]
+}

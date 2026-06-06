@@ -1,0 +1,24 @@
+{
+    "name": "Ice Punk #4747",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/4747.png",
+    "edition": 4747,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Zombie"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Clown Eyes Glacier"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Headband"
+        }
+    ]
+}

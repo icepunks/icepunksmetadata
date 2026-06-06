@@ -1,0 +1,32 @@
+{
+    "name": "Ice Punk #7517",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/7517.png",
+    "edition": 7517,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Dark"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Cigarette"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Cap Forward"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Shadow Beard"
+        }
+    ]
+}

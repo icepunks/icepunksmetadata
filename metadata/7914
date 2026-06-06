@@ -1,0 +1,24 @@
+{
+    "name": "Ice Punk #7914",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/7914.png",
+    "edition": 7914,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Zombie"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Navy Beard"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Knitted Cap"
+        }
+    ]
+}

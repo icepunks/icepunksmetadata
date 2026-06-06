@@ -1,0 +1,32 @@
+{
+    "name": "Ice Punk #1190",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/1190.png",
+    "edition": 1190,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Zombie"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Cigarette"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Bandana"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Handlebars"
+        },
+        {
+            "trait_type": "Accessory 4",
+            "value": "Earring"
+        }
+    ]
+}

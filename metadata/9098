@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #9098",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/9098.png",
+    "edition": 9098,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Albino"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Clown Hair Cyan"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Regular Shades"
+        }
+    ]
+}

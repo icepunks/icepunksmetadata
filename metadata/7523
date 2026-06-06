@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #7523",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/7523.png",
+    "edition": 7523,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Alien"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Earring"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Knitted Cap"
+        },
+        {
+            "trait_type": "Accessory 3",
+            "value": "Medical Mask"
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #7601",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/7601.png",
+    "edition": 7601,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Dark"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Tiara"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Clown Eyes Glacier"
+        }
+    ]
+}

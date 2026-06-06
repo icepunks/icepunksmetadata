@@ -1,0 +1,28 @@
+{
+    "name": "Ice Punk #2119",
+    "description": "IcePunks NFT Collection generated from official traits.",
+    "image": "https://raw.githubusercontent.com/icepunks/icepunksimage/main/images/2119.png",
+    "edition": 2119,
+    "attributes": [
+        {
+            "trait_type": "Type",
+            "value": "Human"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Skin Tone",
+            "value": "Light"
+        },
+        {
+            "trait_type": "Accessory 1",
+            "value": "Clown Eyes Cyan"
+        },
+        {
+            "trait_type": "Accessory 2",
+            "value": "Mohawk Thin"
+        }
+    ]
+}
